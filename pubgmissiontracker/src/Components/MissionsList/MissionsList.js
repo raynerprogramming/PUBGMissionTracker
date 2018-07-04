@@ -136,6 +136,8 @@ export default class TestAccordion extends Component {
         ]
         return (
             <Segment >
+
+                <div>Missions completed: {MissionsList[0].Missions.reduce( x => x.completed?x+1:x)}</div>
                 <Accordion >
                     <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
                         <Icon name='dropdown' />

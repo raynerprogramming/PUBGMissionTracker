@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Image, Button} from 'semantic-ui-react'
+import {Card, Image, Button, Input, Grid} from 'semantic-ui-react'
 class CurrentLevelCard extends React.Component {
   render() {
     var imgStyle = {
@@ -17,22 +17,20 @@ class CurrentLevelCard extends React.Component {
     return (
       <Card>
       <Card.Content>
-        <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' />
-        <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
+        <Card.Header>Event Pass Sanhok</Card.Header>
         <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
+        <Grid stretched centered>
+          <Grid.Row centered>
+          Current Level:<Input/>
+          </Grid.Row>
+          <Grid.Row centered>
+          XP to Next Level:<Input/>
+          </Grid.Row>
+          </Grid>
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-          <Button basic color='red'>
-            Decline
-          </Button>
-        </div>
+        
       </Card.Content>
     </Card>
     )

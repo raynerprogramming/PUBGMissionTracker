@@ -16,7 +16,7 @@ class Missions extends React.Component {
     getStyle(mission){
         return {
             cursor: 'pointer',
-            'background-color': mission.completed ? 'green' : 'red'
+            'background-color': mission.completed ? 'rgb(51,153,51,.8)' : 'red',
            }
     }
     render() {       
@@ -38,11 +38,11 @@ class Missions extends React.Component {
                 {
                     this.state.list.Missions.map(function (mission, index) {
                         return <List.Item>
-                            <div style={this.getStyle(mission)} onClick={() => this.toggleMission(index)}>
+                            <div onClick={() => this.toggleMission(index)}>
                                 <Grid stretched centered>
-                                    <Grid.Row centered>
-                                        <Grid.Column width={15}>{mission.text}</Grid.Column>
-                                        <Grid.Column width={1}>{mission.xp}</Grid.Column>
+                                    <Grid.Row  centered>
+                                        <Grid.Column style={this.getStyle(mission)} width={15}>{mission.text}</Grid.Column>
+                                        <Grid.Column style={this.getStyle(mission)} width={1}>{mission.xp} XP</Grid.Column>
                                     </Grid.Row>
                                 </Grid>
                             </div>
