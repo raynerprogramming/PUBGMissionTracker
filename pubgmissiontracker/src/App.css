@@ -22,7 +22,27 @@
 .App-intro {
   font-size: large;
 }
+.footer{
+  min-height: 5em;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  background-color:black;
+  padding-top:20px;
+}
 
+.App-header-text{
+  color: white;
+    font-size: 6rem;
+    line-height: 0rem;
+    font-family: Teko;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 10px;
+    text-shadow: rgba(0, 0, 0, 0.75) 5px 5px 10px;
+    text-align: center !important;
+    padding-bottom: 55px;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

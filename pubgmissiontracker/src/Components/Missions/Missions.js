@@ -1,5 +1,7 @@
 import React from 'react';
 import { List, Grid } from 'semantic-ui-react'
+import './Missions.css'
+
 class Missions extends React.Component {
     getStyle(mission) {
         return {
@@ -20,7 +22,7 @@ class Missions extends React.Component {
                         return <List.Item>
                             <div onClick={() => this.props.toggleMissionComplete(this.props.index, index2)}>
                                 <Grid stretched centered>
-                                    <Grid.Row style={rowStyle}centered>
+                                    <Grid.Row className="hover" style={rowStyle}centered>
                                         <Grid.Column style={this.getStyle(mission)} width={15}>{mission.text}</Grid.Column>
                                         <Grid.Column width={1}>{mission.xp} XP</Grid.Column>
                                     </Grid.Row>

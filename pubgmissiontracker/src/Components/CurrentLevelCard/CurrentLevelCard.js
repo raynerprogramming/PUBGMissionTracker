@@ -1,5 +1,7 @@
 import React from 'react';
 import { Segment, Input, Grid } from 'semantic-ui-react'
+import './CurrentLevelCard.css'
+
 class CurrentLevelCard extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +10,7 @@ class CurrentLevelCard extends React.Component {
       currentXP: 0,
       maxLevel: 0,
       previousXP: 0,
-      dailyXP: 0,
+      averageDailyXp: 0,
       XPDetail: []
     };
 
@@ -139,6 +141,9 @@ class CurrentLevelCard extends React.Component {
     var neededDailyXP = maxXP - missionXP - currentXP
     var dailyXP = remainingDailyXP > neededDailyXP ? neededDailyXP : remainingDailyXP
 
+    if(this.state.averageDailyXp!==Math.ceil(dailyXP/this.getDaysRemaining()))
+      this.setState({ averageDailyXp: Math.ceil(dailyXP/this.getDaysRemaining()) })
+
     xpDetail.push({ Title: 'Current Pass XP', XP: currentXP })
     xpDetail.push({ Title: 'DailyXP', XP: dailyXP })
     xpDetail.push({ Title: 'Total XP', XP: totalXP > maxXP ? maxXP : totalXP })
@@ -158,10 +163,13 @@ class CurrentLevelCard extends React.Component {
             <Grid.Column width={3}>Event Ends: {this.getTimeToEndDateString()}</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
-            Current Level:<Input type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />
+            Current Level:<Input className="pubgInput" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />
           </Grid.Row>
           <Grid.Row centered>
-            XP to Next Level:<Input type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />
+            XP to Next Level:<Input className="pubgInput" type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />
+          </Grid.Row>
+          <Grid.Row centered>
+            Average Daily XP neeeded: {this.state.averageDailyXp > 0? this.state.averageDailyXp:0}/240
           </Grid.Row>
         </Grid>
         Max Level Achievable: {this.calculateMaxLevel(this.props.list)}

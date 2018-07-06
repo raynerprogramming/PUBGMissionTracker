@@ -77,21 +77,21 @@ export default function GetDefaultMissions  () {
       {
         Title: "WEEK 3",
         "Missions": [
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 200),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20)
+          CreateMission("Take 2,000 damage or more in games where you'ev played for 5 minutes or more (excluding the damage from the bluezone or teammates)", 100),
+          CreateMission("Reach top 5 10 times in Squads", 100),
+          CreateMission("Reach top 10 without using any healing items till the end of a match", 100),
+          CreateMission("Knock down enemies 50 times", 100),
+          CreateMission("Restore 200 health using any healing item", 100),
+          CreateMission("Use a med kit", 100),
+          CreateMission("Drive every vehicle type on Miramar", 200),
+          CreateMission("Drive a Mirado", 20),
+          CreateMission("Drive a van", 20),
+          CreateMission("Drive a buggy", 20),
+          CreateMission("Drive a pickup", 20),
+          CreateMission("Drive a motorbike", 20),
+          CreateMission("Drive a three-wheeled motorbike", 20),
+          CreateMission("Drive a boat", 20),
+          CreateMission("Drive an Aquarail", 20)
         ]
       },
       {
