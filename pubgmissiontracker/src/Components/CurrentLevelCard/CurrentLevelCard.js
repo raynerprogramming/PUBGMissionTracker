@@ -169,7 +169,7 @@ class CurrentLevelCard extends React.Component {
                 <Grid.Row>
                   <Grid.Column id="levelText" width={4}> Current Level:</Grid.Column>
                   <Grid.Column width={4}> <Input id="level" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />         </Grid.Column>
-                  <Grid.Column id="levelText" width={4}> XP to Next Level:</Grid.Column>
+                  <Grid.Column id="levelText" width={4}> Current XP:</Grid.Column>
                   <Grid.Column width={4}><Input id="xp" type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />  </Grid.Column>
                 </Grid.Row>
               </Grid>

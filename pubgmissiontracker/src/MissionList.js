@@ -50,7 +50,7 @@ export default function GetDefaultMissions  () {
           CreateMission("Kill 3 players using handguns", 100),
           CreateMission("Travel 50km by any means", 100),
           CreateMission("Reach top 3 and kill less than 3 players in Solos", 100),
-          CreateMission("Reach top 5 5times", 100),
+          CreateMission("Reach top 5 5 times", 100),
           CreateMission("Various ways to kill", 200),
           CreateMission("Get a kill using a melee weapon", 20),
           CreateMission("Get a kill with headshot", 20),
@@ -64,7 +64,7 @@ export default function GetDefaultMissions  () {
         "Missions": [
           CreateMission("Play on Miramar for 3 hours or more", 100),
           CreateMission("Heal for 300 HP total", 100),
-          CreateMission("Kill 2 players using a pan", 100),
+          CreateMission("Kill 2 players using a pan in Solos", 100),
           CreateMission("Kill 3 players with vehicle", 100),
           CreateMission("Take at least 500 damage from the bluezone", 100),
           CreateMission("Refuel 10 times total", 100),
