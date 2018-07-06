@@ -1,53 +1,33 @@
 import React from 'react';
-import { Card, Image, Button, List, Grid } from 'semantic-ui-react'
+import { List, Grid } from 'semantic-ui-react'
 class Missions extends React.Component {
-    state = {
-        list: this.props.list
-    }
-    handleClick = (e, titleProps) => {
-        this.setState({ completed: !titleProps.mission.completed })
-    }
-    toggleMission = (index) =>{
-        var newVal = !this.state.list.Missions[index].completed
-        var newList = this.state.list
-        newList.Missions[index].completed = newVal
-        this.setState({list:newList})
-    }
-    getStyle(mission){
+    getStyle(mission) {
         return {
             cursor: 'pointer',
-            'background-color': mission.completed ? 'rgb(51,153,51,.8)' : 'red',
-           }
+            'background': mission.completed ? 'linear-gradient(to right,rgba(22,38,34,.8), rgba(16,69,53,.8))' :'linear-gradient(to right, rgb(26,26,30,.8), rgba(34,33,40,.8)',
+            'padding-top':'10px',            
+            'padding-bottom':'10px'
+        }
     }
-    render() {       
-    
-        var imgStyle = {
-            "width": "100%"
-        };
-        const textStyle = {
-            "z-index": "90000",
-            "color": "white",
-            "position": "absolute",
-            "top": "38%",
-            "left": "46%",
-            "transform": "translate(-50%, -50%)",
-            "font-size": "10vh"
-        }        
+    render() {
+        const rowStyle={
+            'padding-top':'0'
+        }
         return (
             <List divided relaxed>
                 {
-                    this.state.list.Missions.map(function (mission, index) {
+                    this.props.list.Missions.map(function (mission, index2) {
                         return <List.Item>
-                            <div onClick={() => this.toggleMission(index)}>
+                            <div onClick={() => this.props.toggleMissionComplete(this.props.index, index2)}>
                                 <Grid stretched centered>
-                                    <Grid.Row  centered>
+                                    <Grid.Row style={rowStyle}centered>
                                         <Grid.Column style={this.getStyle(mission)} width={15}>{mission.text}</Grid.Column>
-                                        <Grid.Column style={this.getStyle(mission)} width={1}>{mission.xp} XP</Grid.Column>
+                                        <Grid.Column width={1}>{mission.xp} XP</Grid.Column>
                                     </Grid.Row>
                                 </Grid>
                             </div>
                         </List.Item>
-                    },this)
+                    }, this)
                 }
             </List>
         )
