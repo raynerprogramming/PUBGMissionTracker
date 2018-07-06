@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Input, Grid } from 'semantic-ui-react'
+import { Segment, Input, Grid, Icon } from 'semantic-ui-react'
 import './CurrentLevelCard.css'
 
 class CurrentLevelCard extends React.Component {
@@ -141,8 +141,8 @@ class CurrentLevelCard extends React.Component {
     var neededDailyXP = maxXP - missionXP - currentXP
     var dailyXP = remainingDailyXP > neededDailyXP ? neededDailyXP : remainingDailyXP
 
-    if(this.state.averageDailyXp!==Math.ceil(dailyXP/this.getDaysRemaining()))
-      this.setState({ averageDailyXp: Math.ceil(dailyXP/this.getDaysRemaining()) })
+    if (this.state.averageDailyXp !== Math.ceil(dailyXP / this.getDaysRemaining()))
+      this.setState({ averageDailyXp: Math.ceil(dailyXP / this.getDaysRemaining()) })
 
     xpDetail.push({ Title: 'Current Pass XP', XP: currentXP })
     xpDetail.push({ Title: 'DailyXP', XP: dailyXP })
@@ -153,26 +153,43 @@ class CurrentLevelCard extends React.Component {
     return max > 30 ? 30 : max
   }
   render() {
+    var titleStyle = {
+      'background': 'yellow !important',
+      'border': '1px solid yellow',
+      'border-radius': '0px'
+    }
+
     return (
 
-      <Segment>
+      <Segment id="levelSegment">
         <Grid stretched centered>
-          <Grid.Row centered>
-            <Grid.Column width={3}>Event Pass Sanhok</Grid.Column>
-            <Grid.Column width={10}></Grid.Column>
-            <Grid.Column width={3}>Event Ends: {this.getTimeToEndDateString()}</Grid.Column>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <Grid>
+                <Grid.Row>
+                  <Grid.Column id="levelText" width={4}> Current Level:</Grid.Column>
+                  <Grid.Column width={4}> <Input id="level" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />         </Grid.Column>
+                  <Grid.Column id="levelText" width={4}> XP to Next Level:</Grid.Column>
+                  <Grid.Column width={4}><Input id="xp" type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+            <Grid.Column width={4}>
+              <Grid.Row id='sanhok'>EVENT PASS: SANHOK</Grid.Row>
+              <Grid.Row>
+                <Icon name="clock outline" /> {this.getTimeToEndDateString()}
+              </Grid.Row>
+            </Grid.Column>
           </Grid.Row>
-          <Grid.Row centered>
-            Current Level:<Input className="pubgInput" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />
+          <Grid.Row centered id="maxAchieve" >
+            <Grid.Column width={5}></Grid.Column>
+            <Grid.Column width={3}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column width={3}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column width={5}></Grid.Column>
           </Grid.Row>
-          <Grid.Row centered>
-            XP to Next Level:<Input className="pubgInput" type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />
-          </Grid.Row>
-          <Grid.Row centered>
-            Average Daily XP neeeded: {this.state.averageDailyXp > 0? this.state.averageDailyXp:0}/240
-          </Grid.Row>
+
         </Grid>
-        Max Level Achievable: {this.calculateMaxLevel(this.props.list)}
+
       </Segment>
     )
   }

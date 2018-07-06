@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Accordion, Icon, Segment, Grid } from 'semantic-ui-react'
+import { Accordion, Icon, Segment, Grid, Button } from 'semantic-ui-react'
 import Missions from '../Missions/Missions.js'
 import './MissionsList.css'
 
 export default class MissionsList extends Component {
     state = { activeIndex: 0 }
     MissionsList = this.props.list
-
     handleClick = (e, titleProps) => {
         const { index } = titleProps
         const { activeIndex } = this.state
@@ -38,7 +37,9 @@ export default class MissionsList extends Component {
                 <Grid.Row className="hover" centered>
                     <Grid.Column width={1}><div className="titleTextStyle">{this.MissionsList[index].Title}</div></Grid.Column>
                     <Grid.Column width={1}><div className="titleCompletionTextStyle">{this.getGroupCompletions(this.MissionsList[index])}</div></Grid.Column>
-                    <Grid.Column width={11}></Grid.Column>
+                    <Grid.Column width={9}></Grid.Column>
+                    <Grid.Column width={2}><Button index={index} id="toggle" onClick={this.props.toggleAll}>TOGGLE ALL</Button></Grid.Column>
+                    
                     <Grid.Column width={2}><div className="xpStyle"> {this.getGroupTotalXP(this.MissionsList[index])} XP</div></Grid.Column>
                     <Grid.Column width={1}><Icon name='dropdown' /></Grid.Column>
                 </Grid.Row>
@@ -53,7 +54,7 @@ export default class MissionsList extends Component {
             <Segment className="segmentStyle">
                 <Accordion >
                     <Accordion.Title className="titleStyle" active={activeIndex === 0} index={0} onClick={this.handleClick}>
-                        {this.getTitleText(0)}
+                        {this.getTitleText(0)}                         
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === 0} content={<Missions list={this.MissionsList[0]} index={0} toggleMissionComplete={this.props.toggleMissionComplete}></Missions>} />
 

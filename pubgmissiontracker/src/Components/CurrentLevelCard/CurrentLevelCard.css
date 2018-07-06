@@ -1,3 +1,7 @@
+input.pubgInput { 
+    background-color: yellow !important;
+    border: 1px yellow;
+}
 .pubgInput:focus { 
     background-color: yellow !important;
     border: 1px yellow;
@@ -5,4 +9,50 @@
 .pubgInput:focus { 
     background-color: grey !important;
     border: 1px black;
+}
+
+input.pubgInput:focus{
+    background-color: yellow !important;
+    border: 1px yellow;
+}
+#level, #xp{
+    border-radius: 0px;
+    background: rgb(58,57,61);
+    color:white;
+    font-family:Teko;
+    font-size:1.25em;
+    line-height:.5em;
+}
+#level:focus, #xp:focus{
+    border: 2px solid yellow;
+}
+#levelSegment {
+    background: linear-gradient(rgba(19,19,20,.8),rgba(29,25,28,.8)) !important; 
+    /* background:blue !important; */
+    font-size: 1.5em !important ;
+    font-family: Teko !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0;
+    -webkit-box-shadow: none !important; 
+     box-shadow: none !important; 
+}
+#eventPass{
+    background:linear-gradient(white,rgb(211,213,211));
+    color:rgba(19,19,20,.8);
+    font-size:1.5em;
+    height:1.5em;
+}
+#sanhok{
+    font-size:2em;
+    padding-top:20px;
+}
+#maxAchieve{
+    padding-top:20px;
+    text-align: center;
+}
+#levelText{
+    font-size:1.8em;
+    text-align:center;
+    padding-top:28px;
 }

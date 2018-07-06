@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  Grid,Image
+  Grid, Image
 } from 'semantic-ui-react'
 import './semantic/dist/semantic.min.css';
 import CurrentLevelCard from './Components/CurrentLevelCard/CurrentLevelCard.js'
@@ -18,6 +18,7 @@ export default class App extends Component {
     super(props)
     this.ToggleMissionComplete = this.ToggleMissionComplete.bind(this)
     this.SetXPDetail = this.SetXPDetail.bind(this)
+    this.toggleAll = this.toggleAll.bind(this)
     var missionState = JSON.parse(localStorage.getItem('missionState'))
     missionState = missionState ? missionState : GetDefaultMissions()
     this.state = {
@@ -25,7 +26,16 @@ export default class App extends Component {
       MissionsList: missionState
     }
   }
-
+  toggleAll = (e, titleProps) => {
+    const { index } = titleProps
+    e.stopPropagation();
+    var newList = this.state.MissionsList
+    newList[index].Missions.forEach(function (mission) {
+      mission.completed = !mission.completed;
+    })
+    
+    this.setState({ MissionsList: newList })
+  }
   ToggleMissionComplete(index, index2) {
     var newVal = !this.state.MissionsList[index].Missions[index2].completed
     var newList = this.state.MissionsList
@@ -51,7 +61,7 @@ export default class App extends Component {
             <Grid.Column width={6}><Image src={logo}></Image></Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
-            <Grid.Column className="App-header-text"  width={16}>MISSION TRACKER</Grid.Column>
+            <Grid.Column className="App-header-text" width={16}>MISSION TRACKER</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
             <Grid.Column width={1}></Grid.Column>
@@ -60,7 +70,7 @@ export default class App extends Component {
           </Grid.Row>
           <Grid.Row centered>
             <Grid.Column width={1}></Grid.Column>
-            <Grid.Column width={14}><MissionsList list={this.state.MissionsList} detail={this.state.XPDetail} toggleMissionComplete={this.ToggleMissionComplete}></MissionsList></Grid.Column>
+            <Grid.Column width={14}><MissionsList toggleAll={this.toggleAll} list={this.state.MissionsList} detail={this.state.XPDetail} toggleMissionComplete={this.ToggleMissionComplete}></MissionsList></Grid.Column>
             <Grid.Column width={1}></Grid.Column>
           </Grid.Row>
 
