@@ -11,7 +11,7 @@ class Missions extends React.Component {
     getMobileDivStyle(mission) {
         return {
             'background': mission.completed ? 'linear-gradient(to right,rgba(22,38,34,.8), rgba(16,69,53,.8))' : 'linear-gradient(to right, rgb(26,26,30,.8), rgba(34,33,40,.8)',
-            'margin-bottom': '5px',
+            'margin-bottom': '.9em',
             'line-height': '1.25em',
             'font-size': '1em'
         }
@@ -19,7 +19,7 @@ class Missions extends React.Component {
     getDivStyle(mission) {
         return {
             'background': mission.completed ? 'linear-gradient(to right,rgba(22,38,34,.8), rgba(16,69,53,.8))' : 'linear-gradient(to right, rgb(26,26,30,.8), rgba(34,33,40,.8)',
-            'margin-bottom': '20px'
+            'margin-bottom': '.9em'
         }
     }
     render() {
@@ -28,13 +28,15 @@ class Missions extends React.Component {
         }
         const textStyle = {
             cursor: 'pointer',
-            'padding-top': '10px'
+            'padding-top': '.5em',
+            'padding-left':'1em'
         }
         const xpStyle = {
             cursor: 'pointer',
-            'padding-top': '10px',
+            'padding-top': '.5em',
             'text-align': 'center',
-            'padding-right':'5px'
+            'padding-right':'.1em',
+            'font-size':'.8em'
         }
         return (
             <List divided relaxed>
@@ -45,8 +47,9 @@ class Missions extends React.Component {
                                 <div onClick={() => this.props.toggleMissionComplete(this.props.index, index2)}>
                                     <Grid >
                                         <Grid.Row className="hover" style={rowStyle} >
-                                            <Grid.Column width={13} style={textStyle}>{mission.text}</Grid.Column>
-                                            <Grid.Column width={3} style={xpStyle}>{mission.xp} XP</Grid.Column>
+                                            <Grid.Column width={12} style={textStyle}>{mission.text}</Grid.Column>
+                                            <Grid.Column width={3} style={xpStyle}>{mission.xp} XP</Grid.Column>                                            
+                                            <Grid.Column width={1}/>
                                         </Grid.Row>
                                     </Grid>
                                 </div>

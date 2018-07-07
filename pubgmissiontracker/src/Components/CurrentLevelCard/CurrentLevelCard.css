@@ -20,11 +20,11 @@ input.pubgInput:focus{
     background: rgb(58,57,61);
     color:white;
     font-family:Teko;
-    font-size:1.25em;
-    line-height:.5em;
+    font-size:1em;
+    width:7em;
 }
 #level:focus, #xp:focus{
-    border: 2px solid yellow;
+    border: 3px solid yellow;
 }
 #levelSegment {
     background: linear-gradient(rgba(19,19,20,.8),rgba(29,25,28,.8)) !important; 
@@ -45,14 +45,28 @@ input.pubgInput:focus{
 }
 #sanhok{
     font-size:2em;
-    padding-top:20px;
+    padding-top:.5em;
+    padding-bottom:.1em;
+}
+#sanhokMobile{
+    font-size:1em;
+}
+#clockMobile{
+    font-size:1em;
+    text-align:right;
 }
 #maxAchieve{
-    padding-top:20px;
+    padding-top:.5em;
     text-align: center;
 }
 #levelText{
     font-size:1.8em;
     text-align:center;
-    padding-top:28px;
+    padding-top:.5em;
+}
+#levelTextMobile{
+    font-size:1em;
+}
+#inputAlign{
+    text-align:right;
 }

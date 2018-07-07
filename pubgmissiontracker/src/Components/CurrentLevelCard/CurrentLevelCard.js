@@ -162,7 +162,7 @@ class CurrentLevelCard extends React.Component {
     return (
 
       <Segment id="levelSegment">
-        <Grid stretched centered stackable>
+        <Grid className="computer only">
           <Grid.Row>
             <Grid.Column width={12}>
               <Grid stackable>
@@ -186,6 +186,36 @@ class CurrentLevelCard extends React.Component {
             <Grid.Column width={3}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
             <Grid.Column width={3}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
             <Grid.Column width={5}></Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Grid className="tablet mobile only">
+          <Grid.Row>
+            <Grid.Column id='sanhokMobile' width={7}>EVENT PASS: SANHOK</Grid.Column>
+            <Grid.Column width={1} />
+            <Grid.Column width={7} id='clockMobile'>
+              <Icon name="clock outline" /> {this.getTimeToEndDateString()}
+            </Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Grid>
+                <Grid.Row>
+                  <Grid.Column id="levelTextMobile" width={6}> Current Level:</Grid.Column>
+                  <Grid.Column width={9} id="inputAlign"> <Input id="level" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} /></Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column id="levelTextMobile" width={6}> Current XP:</Grid.Column>
+                  <Grid.Column width={9} id="inputAlign"><Input id="xp" type="text" onKeyPress={this.validate} min="0" max="399" name="currentXP" value={this.state.currentXP} onChange={this.handleInputChange} />  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered id="maxAchieve" >
+            <Grid.Column centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column centered width={1} />
+            <Grid.Column centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column centered width={1} />
           </Grid.Row>
 
         </Grid>
