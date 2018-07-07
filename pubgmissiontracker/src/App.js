@@ -56,7 +56,7 @@ export default class App extends Component {
     }
     return (
       <div style={style}>
-        <Grid stretched centered>
+        <Grid stretched centered style={{'margin-right':'0'}}>
           {/* <Grid.Row centered>
             <Grid.Column width={6}><Image src={logo}></Image></Grid.Column>
           </Grid.Row> */}

@@ -34,7 +34,7 @@ class Missions extends React.Component {
         const xpStyle = {
             cursor: 'pointer',
             'padding-top': '.5em',
-            'text-align': 'center',
+            'text-align': 'right',
             'padding-right':'.1em',
             'font-size':'.8em'
         }
