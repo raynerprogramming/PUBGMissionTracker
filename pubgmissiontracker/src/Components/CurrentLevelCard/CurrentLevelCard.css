@@ -70,3 +70,6 @@ input.pubgInput:focus{
 #inputAlign{
     text-align:right;
 }
+#yellow{
+   color:rgba(255,199,0,1);
+}

@@ -37,7 +37,7 @@ export default class MissionsList extends Component {
                 <Grid.Row className="hover computer only" centered>
                     <Grid.Column width={1}><div className="titleTextStyle">{this.MissionsList[index].Title}</div></Grid.Column>
                     <Grid.Column width={1}><div className="titleCompletionTextStyle">{this.getGroupCompletions(this.MissionsList[index])}</div></Grid.Column>
-                    <Grid.Column width={9}></Grid.Column>
+                    <Grid.Column width={8}></Grid.Column>
                     <Grid.Column width={2}><Button index={index} id="toggle" onClick={this.props.toggleAll}>TOGGLE ALL</Button></Grid.Column>
                     
                     <Grid.Column width={2}><div className="xpStyle"> {this.getGroupTotalXP(this.MissionsList[index])} XP</div></Grid.Column>

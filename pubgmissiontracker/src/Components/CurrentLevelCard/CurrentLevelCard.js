@@ -108,11 +108,9 @@ class CurrentLevelCard extends React.Component {
     var remainingDailyXP = this.getDaysRemaining() * 240
 
     list.forEach(function (group) {
-      var groupXP = 0
       group.Missions.forEach(function (mission) {
         if (mission.completed) {
           missionXP += mission.xp
-          groupXP += mission.xp
         }
       })
     })
@@ -153,12 +151,6 @@ class CurrentLevelCard extends React.Component {
     return max > 30 ? 30 : max
   }
   render() {
-    var titleStyle = {
-      'background': 'yellow !important',
-      'border': '1px solid yellow',
-      'border-radius': '0px'
-    }
-
     return (
 
       <Segment id="levelSegment">
@@ -183,8 +175,8 @@ class CurrentLevelCard extends React.Component {
           </Grid.Row>
           <Grid.Row centered id="maxAchieve" >
             <Grid.Column width={5}></Grid.Column>
-            <Grid.Column width={3}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
-            <Grid.Column width={3}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column id="yellow" width={3}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column id="yellow" width={3}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
             <Grid.Column width={5}></Grid.Column>
           </Grid.Row>
         </Grid>
@@ -212,9 +204,9 @@ class CurrentLevelCard extends React.Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row centered id="maxAchieve" >
-            <Grid.Column centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column id="yellow" centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
             <Grid.Column centered width={1} />
-            <Grid.Column centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column id="yellow" centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
             <Grid.Column centered width={1} />
           </Grid.Row>
 

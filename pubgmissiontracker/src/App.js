@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  Grid, Image
+  Grid
 } from 'semantic-ui-react'
 import './semantic/dist/semantic.min.css';
 import CurrentLevelCard from './Components/CurrentLevelCard/CurrentLevelCard.js'
-import EventEnd from './Components/EventEnd/EventEnd.js'
-import XPDetail from './Components/XPDetail/XPDetail.js'
 import MissionsList from './Components/MissionsList/MissionsList.js'
 import GetDefaultMissions from './MissionList.js'
-import logo from './images/logo.png'
 import './index.css';
 
 export default class App extends Component {
