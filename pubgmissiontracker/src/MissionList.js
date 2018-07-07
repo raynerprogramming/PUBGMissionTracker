@@ -32,14 +32,14 @@ export default function GetDefaultMissions  () {
           CreateMission("[Linked Mission: 4/4] Locked", 60),
           CreateMission("[Linked Mission: 1/5] Kill a player with a punch on Sanhok", 40),
           CreateMission("[Linked Mission: 2/5] Kill a player using an SMG on Sanhok", 40),
-          CreateMission("[Linked Mission: 3/5] Locked", 40),
-          CreateMission("[Linked Mission: 4/5] Locked", 40),
-          CreateMission("[Linked Mission: 5/5] Locked", 60),
+          CreateMission("[Linked Mission: 3/5] Kill a player using a Shotgun on Sanhok", 40),
+          CreateMission("[Linked Mission: 4/5] Kill a player using an AR on Sanhok", 40),
+          CreateMission("[Linked Mission: 5/5] Kill a player using a SR or DMR on Sanhok", 60),
           CreateMission("[Linked Mission: 1/1] Revive 10 teammates on Sanhok", 40),
-          CreateMission("[Linked Mission: 2/2] Locked", 40),
-          CreateMission("[Linked Mission: 3/3] Locked", 40),
-          CreateMission("[Linked Mission: 4/4] Locked", 40),
-          CreateMission("[Linked Mission: 5/5] Locked", 60)
+          CreateMission("[Linked Mission: 2/5] Use 10 first aid kits on Sanhok", 40),
+          CreateMission("[Linked Mission: 3/5] Use bandages 50 times on Sanhok", 40),
+          CreateMission("[Linked Mission: 4/5] Drink 20 energy drinks while on Sanhok", 40),
+          CreateMission("[Linked Mission: 5/5] Loot carepackges 5 times on Sanhok", 60)
         ]
       },
       {
