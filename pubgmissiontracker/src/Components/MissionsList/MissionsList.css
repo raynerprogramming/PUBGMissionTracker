@@ -32,6 +32,17 @@
     padding-top: 15px !important;
     font-size:.8em !important;
 }
+.titleTextStyleMobile {        
+    padding-top: 15px !important;
+    width:45%;
+    float:left;
+}
+.titleCompletionTextStyleMobile {        
+    padding-top: 15px !important;
+    font-size:.8em !important;
+    width:20%;
+    float:left;
+}
 .hover:hover{
     color:rgb(232,180,0) !important;
 }

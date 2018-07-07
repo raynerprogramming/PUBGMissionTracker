@@ -34,7 +34,7 @@ export default class MissionsList extends Component {
     getTitleText(index) {
         return (
             <Grid>
-                <Grid.Row className="hover" centered>
+                <Grid.Row className="hover computer only" centered>
                     <Grid.Column width={1}><div className="titleTextStyle">{this.MissionsList[index].Title}</div></Grid.Column>
                     <Grid.Column width={1}><div className="titleCompletionTextStyle">{this.getGroupCompletions(this.MissionsList[index])}</div></Grid.Column>
                     <Grid.Column width={9}></Grid.Column>
@@ -42,6 +42,13 @@ export default class MissionsList extends Component {
                     
                     <Grid.Column width={2}><div className="xpStyle"> {this.getGroupTotalXP(this.MissionsList[index])} XP</div></Grid.Column>
                     <Grid.Column width={1}><Icon name='dropdown' /></Grid.Column>
+                </Grid.Row>
+                <Grid.Row className="tablet mobile only">
+                    <Grid.Column width={16} >
+                        <div className="titleTextStyleMobile">{this.MissionsList[index].Title}</div>
+                        <div className="titleCompletionTextStyleMobile"> {this.getGroupCompletions(this.MissionsList[index])}</div>
+                        <div className="xpStyle"> {this.getGroupTotalXP(this.MissionsList[index])} XP</div>
+                    </Grid.Column>
                 </Grid.Row>
             </Grid>
         )
@@ -54,7 +61,7 @@ export default class MissionsList extends Component {
             <Segment className="segmentStyle">
                 <Accordion >
                     <Accordion.Title className="titleStyle" active={activeIndex === 0} index={0} onClick={this.handleClick}>
-                        {this.getTitleText(0)}                         
+                        {this.getTitleText(0)}
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex === 0} content={<Missions list={this.MissionsList[0]} index={0} toggleMissionComplete={this.props.toggleMissionComplete}></Missions>} />
 

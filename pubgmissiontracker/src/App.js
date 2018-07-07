@@ -60,11 +60,20 @@ export default class App extends Component {
           {/* <Grid.Row centered>
             <Grid.Column width={6}><Image src={logo}></Image></Grid.Column>
           </Grid.Row> */}
-          <Grid.Row centered>
+          <Grid.Row className="computer only" centered>
             <Grid.Column id="App-logo-text" width={12}>PLAYERUNKOWN'S BATTLEGROUNDS</Grid.Column>
           </Grid.Row>
-          <Grid.Row centered>
+          <Grid.Row className="computer only">
             <Grid.Column className="App-header-text" width={16}>MISSION TRACKER</Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="tablet mobile only" centered>
+            <Grid.Column id="App-logo-text-mobile-first" width={16}>PLAYERUNKOWN'S</Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="tablet mobile only" centered>
+            <Grid.Column id="App-logo-text-mobile" width={16}>BATTLEGROUNDS</Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="tablet mobile only">
+            <Grid.Column className="App-header-text-mobile" width={16}>MISSION TRACKER</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
             <Grid.Column width={1}></Grid.Column>

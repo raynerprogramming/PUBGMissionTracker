@@ -43,6 +43,18 @@
     text-align: center !important;
     padding-bottom: 55px;
 }
+.App-header-text-mobile{
+  color: white;
+    font-size: 3rem;
+    line-height: 0rem;
+    font-family: Teko;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 20px;
+    text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
+    text-align: center !important;
+    padding-bottom: 55px;
+}
 #App-logo-text{
     color: rgba(255,199,0,1);
     font-size: 5rem;
@@ -54,6 +66,28 @@
     text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
     text-align: center !important;
     padding-bottom: 55px;
+}
+#App-logo-text-mobile{
+  color: rgba(255,199,0,1);
+  font-size: 3rem;
+  line-height: 0rem;
+  font-family: Teko;
+  font-style: normal;
+  font-weight: bold;
+  padding-top: 10px;
+  text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
+  text-align: center !important;
+}
+#App-logo-text-mobile-first{
+  color: rgba(255,199,0,1);
+  font-size: 3rem;
+  line-height: 0rem;
+  font-family: Teko;
+  font-style: normal;
+  font-weight: bold;
+  padding-top: 30px;
+  text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
+  text-align: center !important;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

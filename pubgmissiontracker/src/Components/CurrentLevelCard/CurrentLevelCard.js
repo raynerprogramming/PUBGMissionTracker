@@ -162,10 +162,10 @@ class CurrentLevelCard extends React.Component {
     return (
 
       <Segment id="levelSegment">
-        <Grid stretched centered>
+        <Grid stretched centered stackable>
           <Grid.Row>
             <Grid.Column width={12}>
-              <Grid>
+              <Grid stackable>
                 <Grid.Row>
                   <Grid.Column id="levelText" width={4}> Current Level:</Grid.Column>
                   <Grid.Column width={4}> <Input id="level" type="text" onKeyPress={this.validate} min="1" max="30" name="currentLevel" value={this.state.currentLevel} onChange={this.handleInputChange} />         </Grid.Column>
