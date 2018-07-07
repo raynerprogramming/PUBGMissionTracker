@@ -57,8 +57,11 @@ export default class App extends Component {
     return (
       <div style={style}>
         <Grid stretched centered>
-          <Grid.Row centered>
+          {/* <Grid.Row centered>
             <Grid.Column width={6}><Image src={logo}></Image></Grid.Column>
+          </Grid.Row> */}
+          <Grid.Row centered>
+            <Grid.Column id="App-logo-text" width={12}>PLAYERUNKOWN'S BATTLEGROUNDS</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
             <Grid.Column className="App-header-text" width={16}>MISSION TRACKER</Grid.Column>
