@@ -23,6 +23,16 @@ export default class App extends Component {
       MissionsList: missionState
     }
   }
+  createMarkup(){
+    var qs = Math.round(Math.random() * 10000000);
+    return {__html: '<iframe src="http://ylx-1.com/bnr_xload.php?section=Side&pub=448495&format=728x90&ga=g&xt=153107011855173&xtt='+qs+'" width="728" height="90" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>'}
+  }
+  createMobileMarkup(){
+    var qs = Math.round(Math.random() * 10000000);
+    return {__html:'<iframe src="http://ylx-1.com/bnr_xload.php?section=Side&pub=448495&format=300x50&ga=g&xt=153107024954583&xtt='+qs+'" width="300" height="50" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts"></iframe>'}
+ 
+    
+  }
   toggleAll = (e, titleProps) => {
     const { index } = titleProps
     e.stopPropagation();
@@ -30,7 +40,7 @@ export default class App extends Component {
     newList[index].Missions.forEach(function (mission) {
       mission.completed = !mission.completed;
     })
-    
+
     this.setState({ MissionsList: newList })
   }
   ToggleMissionComplete(index, index2) {
@@ -53,7 +63,8 @@ export default class App extends Component {
     }
     return (
       <div style={style}>
-        <Grid stretched centered style={{'margin-right':'0'}}>
+        <Grid stretched centered style={{ 'margin-right': '0' }}>
+
           {/* <Grid.Row centered>
             <Grid.Column width={6}><Image src={logo}></Image></Grid.Column>
           </Grid.Row> */}
@@ -69,7 +80,7 @@ export default class App extends Component {
           <Grid.Row className="tablet mobile only" centered>
             <Grid.Column id="App-logo-text-mobile" width={16}>BATTLEGROUNDS</Grid.Column>
           </Grid.Row>
-          <Grid.Row className="tablet mobile only">
+          <Grid.Row className=" only">
             <Grid.Column className="App-header-text-mobile" width={16}>MISSION TRACKER</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
@@ -82,7 +93,12 @@ export default class App extends Component {
             <Grid.Column width={14}><MissionsList toggleAll={this.toggleAll} list={this.state.MissionsList} detail={this.state.XPDetail} toggleMissionComplete={this.ToggleMissionComplete}></MissionsList></Grid.Column>
             <Grid.Column width={1}></Grid.Column>
           </Grid.Row>
-
+          <Grid.Row className="computer only">
+            <div  dangerouslySetInnerHTML={this.createMarkup()} id="ad"></div>
+          </Grid.Row>
+          <Grid.Row className="tablet mobile only">
+            <div  dangerouslySetInnerHTML={this.createMobileMarkup()} id="ad"></div>
+          </Grid.Row>
         </Grid>
         <div className="footer">PUBGMissionTracker.com is not associated with PLAYERUNKOWN'S BATTLEGROUNDS, Bluehole inc, Steam or Valve Corp.
 
