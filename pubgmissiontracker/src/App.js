@@ -80,7 +80,7 @@ export default class App extends Component {
           <Grid.Row className="tablet mobile only" centered>
             <Grid.Column id="App-logo-text-mobile" width={16}>BATTLEGROUNDS</Grid.Column>
           </Grid.Row>
-          <Grid.Row className=" only">
+          <Grid.Row className="tablet mobile only">
             <Grid.Column className="App-header-text-mobile" width={16}>MISSION TRACKER</Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
