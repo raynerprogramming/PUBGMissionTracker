@@ -203,10 +203,16 @@ class CurrentLevelCard extends React.Component {
               </Grid>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row centered id="maxAchieve" >
+          <Grid.Row className="computer only" centered id="maxAchieve" >
             <Grid.Column id="yellow" centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
             <Grid.Column centered width={1} />
             <Grid.Column id="yellow" centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column centered width={1} />
+          </Grid.Row>
+          <Grid.Row className="tablet mobile only" centered id="maxAchieve" >
+            <Grid.Column id="yellowMobile" centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column centered width={1} />
+            <Grid.Column id="yellowMobile" centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
             <Grid.Column centered width={1} />
           </Grid.Row>
 

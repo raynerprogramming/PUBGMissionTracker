@@ -21,7 +21,8 @@ input.pubgInput:focus{
     color:white;
     font-family:Teko;
     font-size:1em;
-    width:7em;
+    width:10vw;
+    min-width:100px;
 }
 #level:focus, #xp:focus{
     border: 3px solid yellow;
@@ -40,11 +41,11 @@ input.pubgInput:focus{
 #eventPass{
     background:linear-gradient(white,rgb(211,213,211));
     color:rgba(19,19,20,.8);
-    font-size:1.5em;
-    height:1.5em;
+    font-size:2vw;
+    height:2vw;
 }
 #sanhok{
-    font-size:2em;
+    font-size:2vw;
     padding-top:.5em;
     padding-bottom:.1em;
 }
@@ -60,7 +61,7 @@ input.pubgInput:focus{
     text-align: center;
 }
 #levelText{
-    font-size:1.8em;
+    font-size:2vw;
     text-align:center;
     padding-top:.5em;
 }
@@ -72,4 +73,8 @@ input.pubgInput:focus{
 }
 #yellow{
    color:rgba(255,199,0,1);
+   font-size:1.4vw;
 }
+#yellowMobile{
+    color:rgba(255,199,0,1);
+ }

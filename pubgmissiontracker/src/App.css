@@ -33,15 +33,15 @@
 
 .App-header-text{
   color: white;
-    font-size: 5rem;
+    font-size: 5vw;
     line-height: 0rem;
     font-family: Teko;
     font-style: normal;
     font-weight: bold;
-    padding-top: 10px;
+    padding-top: 2vw;
     text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
     text-align: center !important;
-    padding-bottom: 55px;
+    padding-bottom: 2vw;
 }
 .App-header-text-mobile{
   color: white;
@@ -57,15 +57,15 @@
 }
 #App-logo-text{
     color: rgba(255,199,0,1);
-    font-size: 5rem;
+    font-size: 5vw;
     line-height: 0rem;
     font-family: Teko;
     font-style: normal;
     font-weight: bold;
-    padding-top: 60px;
+    padding-top: 5vw;
     text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px;
     text-align: center !important;
-    padding-bottom: 55px;
+    padding-bottom: 3vw;
 }
 #App-logo-text-mobile{
   color: rgba(255,199,0,1);
