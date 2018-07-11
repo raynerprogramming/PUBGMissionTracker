@@ -101,8 +101,11 @@ export default class App extends Component {
           </Grid.Row>
         </Grid>
         <div className="footer">PUBGMissionTracker.com is not associated with PLAYERUNKOWN'S BATTLEGROUNDS, Bluehole inc, Steam or Valve Corp.
-
+        <br/>
+        <br/>
+        Contact: admin@pubgmissiontracker.com
         </div>
+        
       </div>
     );
   }

@@ -11,7 +11,7 @@ export default function GetDefaultMissions  () {
           CreateMission("Travel a total of 100km or more in vehicles", 400),
           CreateMission("Play 30 games on Erangel and Miramar", 400),
           CreateMission("Kill 100 players", 400),
-          CreateMission("Reach the top 10 on Erangel 5 times", 300),
+          CreateMission("Reach the top 10 on Erangel 5 times in Solo", 300),
           CreateMission("Revive teammates 10 times", 300),
           CreateMission("Kill a player who's at least 300m away using an SR", 300),
           CreateMission("Play 5 Squad games where you survived for at least 30 minutes and killed at least 1 player", 300)
