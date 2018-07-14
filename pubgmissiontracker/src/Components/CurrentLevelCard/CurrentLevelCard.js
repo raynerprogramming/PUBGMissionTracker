@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Input, Grid, Icon } from 'semantic-ui-react'
+import { Segment, Input, Grid, Icon, Divider } from 'semantic-ui-react'
 import './CurrentLevelCard.css'
 
 class CurrentLevelCard extends React.Component {
@@ -23,7 +23,7 @@ class CurrentLevelCard extends React.Component {
     const min = +target.min;
     const max = +target.max;
     if (min && value < min) {
-      value = min
+      value = ""
     }
     if (max && value > max) {
       value = max
@@ -32,6 +32,21 @@ class CurrentLevelCard extends React.Component {
     this.setState({
       [name]: value
     });
+  }
+  getLoginXp() {
+    var daysRemaining = this.getDaysRemaining();
+    return daysRemaining > 6 ? 6 * 200 : daysRemaining * 200;
+  }
+  getMissionXp(list) {
+    var missionXP = 0;
+    list.forEach(function (group) {
+      group.Missions.forEach(function (mission) {
+        if (mission.completed) {
+          missionXP += mission.xp
+        }
+      })
+    })
+    return missionXP;
   }
   getDaysRemaining() {
     const endDate = new Date(Date.UTC(2018, 6, 21, 0, 0, 0, 0));
@@ -43,6 +58,56 @@ class CurrentLevelCard extends React.Component {
     var days = Math.floor(delta / 86400);
 
     return days
+  }
+  getNeededDailyXp(list) {
+    var totalXp = this.getTotalXp(list);
+    var getNonDailyXp = totalXp - this.getRemainingDailyXp();
+
+    var dailyXp = this.getMaxLevel(list) * 400 - getNonDailyXp
+    return dailyXp < 0 ? 0 : dailyXp
+  }
+  getCurrentXp() {
+    return +this.state.currentLevel * 400 + +this.state.currentXP
+  }
+  getMaxXp() {
+    return 400 * 30
+  }
+  getRemainingDailyXp() {
+    return this.getDaysRemaining() * 240
+  }
+  getMaxLevel(list, xpDetail) {
+    var totalXp = this.getTotalXp(list, null)
+    var max = Math.floor((totalXp) / 400)
+    return max > 30 ? 30 : max;
+  }
+  getAverageDailyXp(list) {
+    var totalXp = this.getTotalXp(list);
+    var getNonDailyXp = totalXp - this.getRemainingDailyXp();
+
+    var dailyXp = Math.ceil((this.getMaxLevel(list) * 400 - getNonDailyXp) / this.getDaysRemaining());
+    return dailyXp < 0 ? 0 : dailyXp
+  }
+  getTotalXp(list, xpDetail) {
+    var totalXp = this.getMissionXp(list) + this.getRemainingDailyXp() + this.getCurrentXp() + this.getLoginXp()
+    var max = Math.floor((totalXp) / 400)
+    if (max > 6 && this.state.currentLevel < 6) {
+      totalXp += 200
+      if (xpDetail)
+        xpDetail.push({ Title: 'Level 6 Reward', XP: 200 })
+    }
+    max = Math.floor((totalXp) / 400)
+    if (max > 12 && this.state.currentLevel < 12) {
+      totalXp += 200
+      if (xpDetail)
+        xpDetail.push({ Title: 'Level 12 Reward', XP: 200 })
+    }
+    max = Math.floor((totalXp) / 400)
+    if (max > 20 && this.state.currentLevel < 20) {
+      totalXp += 200
+      if (xpDetail)
+        xpDetail.push({ Title: 'Level 20 Reward', XP: 200 })
+    }
+    return totalXp
   }
   validate(evt) {
     var theEvent = evt// || window.event;
@@ -97,59 +162,40 @@ class CurrentLevelCard extends React.Component {
     })
     return shouldUpdate
   }
-  calculateMaxLevel(list) {
-    var currentXP = +this.state.currentLevel * 400 + +this.state.currentXP
-
+  getXpDetail(list) {
     var xpDetail = []
-    var maxXP = 400 * 30
-    var missionXP = 0
+    xpDetail.push({ Title: 'Current Pass XP', XP: this.getCurrentXp() })
+    xpDetail.push({ Title: 'Daily XP', XP: this.getNeededDailyXp(list) })
+    xpDetail.push({ Title: 'Mission XP', XP: this.getMissionXp(list) })
+    xpDetail.push({ Title: 'Daily Login XP', XP: this.getLoginXp() })
+    //add in reward xp rows
+    this.getTotalXp(list, xpDetail)
 
-    //120 xp from daily mission, 120 xp from daily play time
-    var remainingDailyXP = this.getDaysRemaining() * 240
-
-    list.forEach(function (group) {
-      group.Missions.forEach(function (mission) {
-        if (mission.completed) {
-          missionXP += mission.xp
-        }
-      })
-    })
-    //these should already be included in "currentLevel"
-    //level 1 400xp    
-    //bluehole fuckup reward 400xp
-    var totalXP = missionXP + remainingDailyXP + currentXP
-
-    var max = Math.floor((totalXP) / 400)
-    if (max > 6 && this.state.currentLevel < 6) {
-      missionXP += 200
-      xpDetail.push({ Title: 'Level 6 Reward', XP: 200 })
-    }
-    max = Math.floor((totalXP) / 400)
-    if (max > 12 && this.state.currentLevel < 12) {
-      missionXP += 200
-      xpDetail.push({ Title: 'Level 12 Reward', XP: 200 })
-    }
-    max = Math.floor((totalXP) / 400)
-    if (max > 20 && this.state.currentLevel < 20) {
-      missionXP += 200
-      xpDetail.push({ Title: 'Level 20 Reward', XP: 200 })
-    }
-
-
-    var neededDailyXP = maxXP - missionXP - currentXP
-    var dailyXP = remainingDailyXP > neededDailyXP ? neededDailyXP : remainingDailyXP
-
-    if (this.state.averageDailyXp !== Math.ceil(dailyXP / this.getDaysRemaining()))
-      this.setState({ averageDailyXp: Math.ceil(dailyXP / this.getDaysRemaining()) })
-
-    xpDetail.push({ Title: 'Current Pass XP', XP: currentXP })
-    xpDetail.push({ Title: 'DailyXP', XP: dailyXP })
-    xpDetail.push({ Title: 'Total XP', XP: totalXP > maxXP ? maxXP : totalXP })
-    if (this.shouldUpdate(this.props.detail, xpDetail))
-      this.props.SetXPDetail(xpDetail)
-    max = Math.floor((totalXP) / 400)
-    return max > 30 ? 30 : max
+    return xpDetail;
   }
+  getTotalXpDetail(xpDetail) {
+    var totalXp = 0;
+    xpDetail.forEach(function (detail) {
+      totalXp += +detail.XP;
+    })
+
+    return totalXp;
+  }
+  getGridItems(list) {
+    var totalXP = 0;
+    var xpDetail = this.getXpDetail(list);
+    var rows = xpDetail.map(function (detail, index2) {
+      return (
+        <Grid.Row className="" id="maxAchieve">
+          <Grid.Column id="" centered width={8}>{detail.Title}</Grid.Column>
+          <Grid.Column id="" centered width={8}>{detail.XP}</Grid.Column>
+        </Grid.Row>
+      )
+    }, this)
+
+    return rows
+  }
+
   render() {
     return (
 
@@ -175,9 +221,19 @@ class CurrentLevelCard extends React.Component {
           </Grid.Row>
           <Grid.Row centered id="maxAchieve" >
             <Grid.Column width={5}></Grid.Column>
-            <Grid.Column id="yellow" width={3}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
-            <Grid.Column id="yellow" width={3}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column id="yellow" width={3}>Max Level Achievable: {this.getMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column id="yellow" width={3}>Average Daily XP needed:  {this.getAverageDailyXp(this.props.list)}/240</Grid.Column>
             <Grid.Column width={5}></Grid.Column>
+          </Grid.Row>
+          <Grid.Row className="" id="maxAchieve" >
+            <Grid.Column id="" centered width={16}>XP Details: </Grid.Column>
+          </Grid.Row>
+          {
+            this.getGridItems(this.props.list)
+          }
+          <Grid.Row className="totalRow" id="maxAchieve">
+            <Grid.Column id="" centered width={8}>Total XP:</Grid.Column>
+            <Grid.Column id="" centered width={8}>{this.getTotalXpDetail(this.getXpDetail(this.props.list))}</Grid.Column>
           </Grid.Row>
         </Grid>
         <Grid className="tablet mobile only">
@@ -203,19 +259,28 @@ class CurrentLevelCard extends React.Component {
               </Grid>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row className="computer only" centered id="maxAchieve" >
-            <Grid.Column id="yellow" centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+          {/* <Grid.Row className="computer only" centered id="maxAchieve" >
+            <Grid.Column id="yellow" centered width={7}>Max Level Achievable: {this.getMaxLevel(this.props.list)}   </Grid.Column>
             <Grid.Column centered width={1} />
-            <Grid.Column id="yellow" centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column id="yellow" centered width={7}>Average Daily XP needed: {this.getAverageDailyXp(this.props.list)}/240</Grid.Column>
             <Grid.Column centered width={1} />
-          </Grid.Row>
+          </Grid.Row> */}
           <Grid.Row className="tablet mobile only" centered id="maxAchieve" >
-            <Grid.Column id="yellowMobile" centered width={7}>Max Level Achievable: {this.calculateMaxLevel(this.props.list)}   </Grid.Column>
+            <Grid.Column id="yellowMobile" centered width={7}>Max Level Achievable: {this.getMaxLevel(this.props.list)}   </Grid.Column>
             <Grid.Column centered width={1} />
-            <Grid.Column id="yellowMobile" centered width={7}>Average Daily XP needed: {this.state.averageDailyXp > 0 ? this.state.averageDailyXp : 0}/240</Grid.Column>
+            <Grid.Column id="yellowMobile" centered width={7}>Average Daily XP needed: {this.getAverageDailyXp(this.props.list)}/240</Grid.Column>
             <Grid.Column centered width={1} />
           </Grid.Row>
-
+          <Grid.Row className="tablet mobile only" id="maxAchieve" >
+            <Grid.Column id="" centered width={16}>XP Details: </Grid.Column>
+          </Grid.Row>
+          {
+            this.getGridItems(this.props.list)
+          }
+          <Grid.Row className="totalRow" id="maxAchieve">
+            <Grid.Column id="" centered width={8}>Total XP:</Grid.Column>
+            <Grid.Column id="" centered width={8}>{this.getTotalXpDetail(this.getXpDetail(this.props.list))}</Grid.Column>
+          </Grid.Row>
         </Grid>
 
       </Segment>

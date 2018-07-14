@@ -16,7 +16,12 @@ export default class App extends Component {
     this.ToggleMissionComplete = this.ToggleMissionComplete.bind(this)
     this.SetXPDetail = this.SetXPDetail.bind(this)
     this.toggleAll = this.toggleAll.bind(this)
-    var missionState = JSON.parse(localStorage.getItem('missionState'))
+    var currentVersion = "1.0"
+    var localVersion = JSON.parse(localStorage.getItem('missionVersion'))
+    var missionState;
+    if(localVersion && currentVersion === localVersion.version){
+      missionState = JSON.parse(localStorage.getItem('missionState'))
+    }
     missionState = missionState ? missionState : GetDefaultMissions()
     this.state = {
       XPDetail: [],
@@ -41,6 +46,7 @@ export default class App extends Component {
       mission.completed = !mission.completed;
     })
 
+    localStorage.setItem('missionVersion', JSON.stringify({version:"1.0"}))
     this.setState({ MissionsList: newList })
   }
   ToggleMissionComplete(index, index2) {
@@ -48,6 +54,7 @@ export default class App extends Component {
     var newList = this.state.MissionsList
     newList[index].Missions[index2].completed = newVal
     localStorage.setItem('missionState', JSON.stringify(newList))
+    localStorage.setItem('missionVersion', JSON.stringify({version:"1.0"}))
     this.setState({ MissionsList: newList })
   }
   SetXPDetail(detail) {

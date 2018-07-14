@@ -97,16 +97,16 @@ export default function GetDefaultMissions  () {
       {
         Title: "WEEK 4",
         "Missions": [
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 100),
-          CreateMission("Locked", 200),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20),
-          CreateMission("Locked", 20)
+          CreateMission("Drive vehicles for 60 minutes", 100),
+          CreateMission("Destroy 10 or more vehicles total", 100),
+          CreateMission("Get picked up by a teammate and revive teammates at least 3 times in a single game", 100),
+          CreateMission("Use an adrenaline syringe", 100),
+          CreateMission("Kill at least 1 player by punching, and die by getting punched", 100),
+          CreateMission("Be among the final 2 players in a Solo game", 100),
+          CreateMission("Play various maps", 200),
+          CreateMission("Play on Erangel 3 times", 20),
+          CreateMission("Play on miramar 3 times", 20),
+          CreateMission("Play on Sanhok 3 times", 20)
         ]
       }
     ]
