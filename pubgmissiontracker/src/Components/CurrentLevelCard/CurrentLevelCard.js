@@ -49,7 +49,7 @@ class CurrentLevelCard extends React.Component {
     return missionXP;
   }
   getDaysRemaining() {
-    const endDate = new Date(Date.UTC(2018, 6, 21, 0, 0, 0, 0));
+    const endDate = new Date(Date.UTC(2018, 6, 22, 0, 0, 0, 0));
     var date = Date.now();
     var delta = (endDate - date) / 1000;
 
@@ -127,7 +127,7 @@ class CurrentLevelCard extends React.Component {
     }
   }
   getTimeToEndDateString() {
-    const endDate = new Date(Date.UTC(2018, 6, 21, 0, 0, 0, 0));
+    const endDate = new Date(Date.UTC(2018, 6, 22, 0, 0, 0, 0));
     var date = Date.now();
     var delta = (endDate - date) / 1000;
 
